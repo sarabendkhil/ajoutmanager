@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="cardshadowmb-4">
+    <div class="card-body">
+    <table class="table table-striped">
+       <thead>
+        <tr> <th>Id</th><th>Nom de Chanson</th> <th>Nom de Chanteur</th> <th>Date Publication</th> <th>Manager</th> </tr>
+    </thead>  
+      <tbody *ngFor="let chanson of chansons">
+        <tr>
+          <td>{{chanson.idChanson}}</td>
+          <td>{{chanson.nomChanson}}</td>
+          <td>{{chanson.nomChanteur}}</td>
+          <td>{{chanson.datePublication |date:'dd/MM/yyyy'}}</td>
+          <td>{{chanson.manager.nomMan}}</td>
+          <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerChanson(chanson)">Supprimer</a></td>
+          <td><a *ngIf="authService.isAdmin()"  class="btn btn-success" [routerLink]="['/updateChanson',chanson.idChanson]">Modifier</a></td>
+         </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

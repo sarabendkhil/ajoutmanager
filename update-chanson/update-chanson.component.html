@@ -1,0 +1,35 @@
+<div class="container">
+    <div>
+        <h2>Modifier une Chanson :</h2>
+    </div>
+    <form >
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >ID Chanson</label>
+            <input type="text" [(ngModel)]="currentChanson.idChanson" name="idChanson" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >Nom Chanson</label>
+            <input type="text"[(ngModel)]= "currentChanson.nomChanson" name="nomChanson" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >Nom Chanteur</label>
+            <input type="text" [(ngModel)]= "currentChanson.nomChanteur" name="nomChanteur" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Date Publication</label>
+            <input type="date" [ngModel]="currentChanson.datePublication | date: 'yyyy-MM-dd'" (ngModelChange)="currentChanson.datePublication= $event" name="datePublication" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <select class="form-control form-control-lg" id="idMan" name="idMan" [(ngModel)]="currentChanson.manager.idMan">
+                  <option *ngFor="let man of managers" [value]="man.idMan">
+                      {{man.nomMan}}
+                    </option>
+            </select>
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="updateChanson()" class="btn btn-success">Modifer</button>
+    
+        </div>
+    </form>
+    
+    </div>
